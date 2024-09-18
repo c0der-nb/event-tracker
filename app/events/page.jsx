@@ -1,8 +1,9 @@
 'use client';
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import EventCard from "@/components/EventCard";
 
-export default async function EventsPage() {
+async function EventsComponent() {
     const searchParam = useSearchParams();
     const response = await fetch("https://qevent-backend.labs.crio.do/events");
     let events = await response.json();
@@ -16,4 +17,12 @@ export default async function EventsPage() {
             {events.map(event => (<EventCard eventData={event} />))}
         </div>
     )
+}
+
+export default function EventsPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+          <EventsComponent />
+        </Suspense>
+      );
 }
