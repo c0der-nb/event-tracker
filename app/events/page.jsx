@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import EventCard from "@/components/EventCard";
 
 export default async function EventsComponent({ searchParams }) {
