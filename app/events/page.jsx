@@ -1,8 +1,7 @@
 import EventCard from "@/components/EventCard";
 
 export default async function EventsComponent({ searchParams }) {
-    const response = await fetch("https://qevent-backend.labs.crio.do/events");
-    let events = await response.json();
+    let events = await fetch("https://qevent-backend.labs.crio.do/events").then((res) => res.json());
     if (searchParams && searchParams['artist'])
         events = events.filter(event => event.artist === searchParams['artist'])
     if (searchParams && searchParams['tag'])
