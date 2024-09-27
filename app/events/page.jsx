@@ -5,7 +5,7 @@ export default async function EventsPage({ searchParams }) {
     if (searchParams && searchParams['artist'])
         events = events.filter(event => event.artist === searchParams['artist'])
     if (searchParams && searchParams['tag'])
-        events = events.filter(event => event.tags.includes(searchParams['tag']));
+        events = events.filter(event => event.tags?.includes(searchParams['tag']));
 
     return (
         <div className="flex flex-row gap-x-2 gap-y-2 px-3 py-3 flex-wrap justify-evenly">
